@@ -1,7 +1,7 @@
 const initialState = {
-    popular: [],
+    popularGames: [],
     newGames: [],
-    upcoming: [],
+    upcomingGames: [],
     searched: []
 }
 
