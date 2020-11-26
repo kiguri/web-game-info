@@ -6,14 +6,12 @@ import { loadGames } from '../../actions/gamesAction'
 //Import components
 import Game from '../../components/Game'
 import GameDetails from '../../components/GameDetails'
+import Spinner from '../../components/Spinner'
 //Import styles
-import {
-    ListGameContainer,
-    ListGameH2,
-    ListGameWrap
-} from './styles'
+import { ListGameContainer, ListGameH2, ListGameWrap } from './styles'
 //Import motion
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { fadeIn } from '../../animation'
 
 const Home = () => {
 
@@ -22,7 +20,7 @@ const Home = () => {
     const pathId = location.pathname.split('/')[2]
     
     const dispatch = useDispatch()
-    const { popularGames, newGames, upcomingGames, searched } = useSelector(state => state.games)
+    const { popularGames, newGames, upcomingGames, searched, loading } = useSelector(state => state.games)
     
     //FETCH DATA
     useEffect(() => {
@@ -30,8 +28,10 @@ const Home = () => {
     }, [dispatch]);
 
     return ( 
-        <ListGameContainer>
+        <ListGameContainer variants={fadeIn} initial='hidden' animate='show'>
             <AnimateSharedLayout type='crossfade'>
+                {loading && <Spinner /> }
+
                 <AnimatePresence>
                     {pathId && <GameDetails pathId={pathId} />}
                 </AnimatePresence>

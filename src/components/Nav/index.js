@@ -3,11 +3,9 @@ import { useState } from 'react'
 import { fetchSearch } from '../../actions/gamesAction'
 import { useDispatch } from 'react-redux'
 
-import {
-    NavContainer,
-    Logo,
-    LogoImg
-} from './styles'
+import { NavContainer, Logo, LogoImg } from './styles'
+
+import { fadeIn } from '../../animation'
 
 import logo from '../../img/logo.svg'
 
@@ -28,7 +26,7 @@ const Nav = () => {
     }
 
     return ( 
-        <NavContainer>
+        <NavContainer variants={fadeIn} initial='hidden' animate='show'>
             <Logo onClick={clearSearched}>
                 <LogoImg src={logo} alt='logo'/>
                 <h1>Kiguri</h1>

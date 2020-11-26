@@ -9,6 +9,9 @@ import {
 
 export const loadGames = () => async (dispatch) => {
     try {
+        dispatch({
+            type: 'FETCH_GAMES'
+        })
         const [popularGamesData, upcomingGamesData, newGamesData] = await Promise.all([
             axios.get(popularGamesURL()), 
             axios.get(upcomingGamesURL()), 
@@ -16,7 +19,7 @@ export const loadGames = () => async (dispatch) => {
         ])
 
         dispatch({
-            type: 'FETCH_GAMES',
+            type: 'FETCH_GAMES_SUCCESS',
             payload: {
                 popularGames: popularGamesData.data.results,
                 upcomingGames: upcomingGamesData.data.results,
