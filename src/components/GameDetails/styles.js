@@ -46,6 +46,12 @@ export const Platforms = styled(motion.div)`
     display: flex;
     justify-content: space-evenly;
     margin-left: 3rem;
+    img {
+        width: 2rem;
+        height: 2rem;
+        display: inline;
+        margin-left: 2rem;
+    }
 `
 
 export const Media = styled(motion.div)`
