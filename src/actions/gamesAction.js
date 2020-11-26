@@ -3,7 +3,7 @@ import axios from 'axios'
 import { 
     popularGamesURL, 
     upcomingGamesURL,
-    newGamesURL 
+    newGamesURL,
 } from '../api'
 
 export const loadGames = () => async (dispatch) => {
@@ -12,7 +12,7 @@ export const loadGames = () => async (dispatch) => {
             axios.get(popularGamesURL()), 
             axios.get(upcomingGamesURL()), 
             axios.get(newGamesURL())
-        ]);
+        ])
 
         dispatch({
             type: 'FETCH_GAMES',
