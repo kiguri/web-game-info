@@ -56,6 +56,6 @@ export const Description = styled(motion.div)`
     margin: 5rem 0;
 `
 
-export const Img = styled.img`
+export const Img = styled(motion.img)`
     width: 100%;
 `

@@ -9,22 +9,28 @@ import {
     GameImg
 } from './styles'
 
+import { motion } from 'framer-motion'
 import { resizeImg } from '../../utils'
 
 const Game = ({ name, released, image, id }) => {
     const dispatch = useDispatch()
-
+   
     const loadGameDetailsHandler = () => {
         document.body.style.overflow = 'hidden'
         dispatch(loadGameDetails(id))
     }
 
+
     return ( 
-        <GameContainer onClick={loadGameDetailsHandler}>
+        <GameContainer layoutId={id.toString()} onClick={loadGameDetailsHandler}>
             <Link to={`/game/${id}`}>
-                <h3>{name}</h3>
+                <motion.h3 layoutId={`title ${id.toString()}`} >{name}</motion.h3>
                 <p>{released}</p>
-                <GameImg src={resizeImg(image, 640)} alt={name}/>
+                <GameImg 
+                    layoutId={`image ${id.toString()}`} 
+                    src={resizeImg(image, 640)} 
+                    alt={name}
+                />
             </Link>
         </GameContainer>
      );

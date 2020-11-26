@@ -12,9 +12,10 @@ import {
     Img
 } from './styles'
 
+import { motion } from 'framer-motion'
 import { resizeImg } from '../../utils'
 
-const GameDetails = () => {
+const GameDetails = ({ pathId }) => {
     const { game, screen, loading } = useSelector(state => state.details)
 
     const history = useHistory()
@@ -31,10 +32,10 @@ const GameDetails = () => {
             {!loading &&
             (
             <DetailsContainer className='details' onClick={exitDetailHandler}>
-                <DetailsWrap>
+                <DetailsWrap layoutId={pathId}>
                     <Stats>
                         <div>
-                            <h3>{game.name}</h3>
+                            <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                             <p>Rating: {game.rating}</p>
                         </div>
     
@@ -49,7 +50,10 @@ const GameDetails = () => {
                     </Stats>
     
                     <Media>
-                        <Img src={resizeImg(game.background_image, 1280)} alt={game.name} />
+                        <Img 
+                            layoutId={`image ${pathId}`} 
+                            src={resizeImg(game.background_image, 1280)} 
+                            alt={game.name} />
                     </Media>
     
                     <Description>

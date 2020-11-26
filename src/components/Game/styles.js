@@ -9,7 +9,7 @@ export const GameContainer = styled(motion.div)`
     overflow: hidden;
 `
 
-export const GameImg = styled.img`
+export const GameImg = styled(motion.img)`
     width: 100%;
     height: 40vh;
     object-fit: cover;
