@@ -22,7 +22,7 @@ const Home = () => {
     const pathId = location.pathname.split('/')[2]
     
     const dispatch = useDispatch()
-    const { popularGames, newGames, upcomingGames} = useSelector(state => state.games)
+    const { popularGames, newGames, upcomingGames, searched } = useSelector(state => state.games)
     
     //FETCH DATA
     useEffect(() => {
@@ -35,6 +35,23 @@ const Home = () => {
                 <AnimatePresence>
                     {pathId && <GameDetails pathId={pathId} />}
                 </AnimatePresence>
+
+                {searched.length > 0 && (
+                    <>
+                        <ListGameH2>Search results: </ListGameH2>
+                        <ListGameWrap>
+                            {searched.map(game => (
+                                <Game 
+                                    key={game.id}
+                                    name={game.name} 
+                                    id={game.id}
+                                    released={game.released}
+                                    image={game.background_image}
+                                />
+                            ))}
+                        </ListGameWrap>
+                    </>
+                )}
 
                 <ListGameH2>Upcoming Games</ListGameH2>
                 <ListGameWrap>
