@@ -51,6 +51,12 @@ export const Platforms = styled(motion.div)`
         height: 2rem;
         display: inline;
         margin-left: 2rem;
+
+        @media screen and (max-width: 768px) {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 1rem;
+        }
     }
 `
 
